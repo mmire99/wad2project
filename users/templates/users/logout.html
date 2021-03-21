@@ -1,0 +1,9 @@
+{% extends "stormwind/base.html" %}
+{% block title %} About {% endblock %}
+{% block content %}
+
+<p></p>Have an account? <a href="{% url 'login' %}">Sign in</a></p>
+<hr>
+<p></p>Need An Account? <a href="{% url 'register' %}">Sign Up</a>
+
+{% endblock content %}

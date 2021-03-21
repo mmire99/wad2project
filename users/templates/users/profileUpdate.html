@@ -1,0 +1,37 @@
+{% extends "stormwind/base.html" %}
+{% block title %} Update Profile {% endblock %}
+{% block content %}
+
+<div class="row gutters update_" style='margin-top:20px;'>
+  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="account-settings">
+          <div class="user-profile">
+            <div class="user-avatar">
+              <img src="{{ user.profile.profile_pic.url }}" alt="Profile Picture">
+            </div>
+            <h5 class="user-name">{{ user.username }}</h5>
+            <h6 class="user-email">{{ user.email }}</h6>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="register_">
+  <form class="allignForm"method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <legend class="border-bottom mb-4">Change your Profile</legend>
+    <strong>{{ u_form }}</strong>
+    <strong>{{ p_form }}</strong>
+    <div class="form-group">
+      <button id="signupSubmit" type="submit" class="btn btn-info btn-block">Update</button>
+    </div>
+    <hr>
+    <p></p>Need to change your password? <a href="#">Change Here</a>
+  </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "stormwind/base.html" %}
+{% block title %} StormWind Herald {% endblock %}
+{% block content %}
+
+
+
+  user -  {{ object.member }}
+  date - {{ object.date_created|date:"F d,Y" }}
+  <hr>
+  title - {{ object.title }}
+  <br>
+  body - {{ object.content|safe }}
+  {{ object.member.profile.profile_pic.url }}
+  category - {{ object.category }}
+  <hr>
+
+  <button class="btn btn-primary" id="about-btn">
+  Click me - I'm using JQuery!
+  </button>
+
+
+<form action="{% url 'like_post' thread.pk %}" method="post">
+  {% csrf_token %}
+  {% if user.is_authenticated %}
+    {% if liked %}
+    <button type="Submit" name="thread_id" value="{{ thread.id }}" class = "btn btn-danger btn-sm">
+      Unike</button> - {{ total_likes }}
+    {% else %}
+    <button type="Submit" name="thread_id" value="{{ thread.id }}" class = "btn btn-primary btn-sm">
+      Like</button> ---> {{ total_likes }}
+    {% endif %}
+  {% else %}
+  <small><a href="{% url 'login' %}">
+        Login</a> to like</small>
+  {% endif %}
+</form>
+
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "stormwind/base.html" %}
+{% block title %} Profile {% endblock %}
+{% block content %}
+<div class="row gutters" style='margin-top:20px;'>
+  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="account-settings">
+          <div class="user-profile">
+            <div class="user-avatar">
+              <img src="{{ user.profile.profile_pic.url }}" alt="Profile Picture">
+            </div>
+            <h5 class="user-name">{{ user.username }}</h5>
+            <h6 class="user-email">{{ user.email }}</h6>
+            <br>
+            <h6 class='user-email'><a href="{% url 'editProfile' %}">Change User Profile Here</a></h6>
+            <h6 class="user-email"><a href="#">Change User Password Here</a></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h6 class="mb-3 text-primary">Recent Threads</h6>
+          </div>
+          <div class="row">
+            {% for t in page_obj %}
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{ t.title }}</h5>
+                  {% if t.content|length > 90 %}
+                    <p class="card-text">{{ t.content|safe|slice:90 }}...</p>
+                  {% else %}
+                    <p class="card-text">{{ t.content|safe }}</p>
+                  {% endif %}
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% if t_count == 0 %}
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">It's super easy to create a thread :)</h5>
+                  <p class="card-text">Create a thread in seconds by clicking below</p>
+                  <a href="{% url 'create-thread' %}" class="btn btn-primary">Create Thread</a>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}

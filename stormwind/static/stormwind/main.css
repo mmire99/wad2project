@@ -1,0 +1,70 @@
+body{
+  background-color: #222831;
+  color: #eeeeee;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+h1,h2,h3,h4,h5{
+  color: #eeeeee;
+}
+
+form{
+  width:30%;
+  text-align: center;
+  display: inline-block;
+}
+
+.register_{
+  text-align: center;
+}
+
+.Header_{
+  font-family:sans-serif;
+  -webkit-text-stroke:1px white;
+  -webkit-text-fill-color:transparent;
+}
+
+
+.update_{
+  position: relative;
+  right:90px
+}
+.allignForm{
+  margin-top: 30px;
+  width: 50%;
+  position: relative;
+  left: 70px;
+}
+ .account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.card {
+    background: #272E48;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+}
