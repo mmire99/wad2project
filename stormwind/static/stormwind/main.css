@@ -68,3 +68,37 @@ form{
     border: 0;
     margin-bottom: 1rem;
 }
+ .cats{
+   background: #272E48;
+   width: 350px;
+   height: 350px;
+   margin:50px;
+ }
+.flaticons{
+  width: 40px;
+  height: 40px;
+  margin: 2px;
+  padding:4px;
+  float: left;
+}
+ .Community{
+   position: relative;
+  display: inline-block;
+ }
+.Guide{
+  position: relative;
+  display: inline-block;
+}
+
+.GamePlay{
+  position: absolute;
+  display: inline-block;
+}
+.Classes{
+  position: absolute;
+  display: inline-block;
+}
+
+.bottom{
+  width: 100%;
+}

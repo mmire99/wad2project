@@ -1,3 +1,3 @@
-$(document).ready(function() {
-alert('Hello, world!');
-});
+$("#target").click(function(){
+  alert("HIIIIIII");
+})

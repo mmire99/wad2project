@@ -1,8 +1,43 @@
 {% extends "stormwind/base.html" %}
+{% load staticfiles %}
 {% block title %} StormWind Herald {% endblock %}
 {% block content %}
 
-{% for t in cat_menu %}
+
+<h1>Categories</h1>
+<div class="top">
+{% for c in cats %}
+  {% if c.name == "Community" %}
+    <div class="cats Community">
+      <img class ="flaticons"src="{% static 'StormWind-img/helmet.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Community</h2></a>
+    </div>
+  {% endif %}
+  {% if c.name == "Guides" %}
+  <div class="cats Guide">
+    <img class="flaticons"src="{% static 'StormWind-img/give-heart.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Guide</h2></a>
+  </div>
+</div>
+{% endif %}
+{% if c.name == "GamePlay" %}
+
+  <div class="cats Community">
+    <img class="flaticons" src="{% static 'StormWind-img/swords.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>GamePlay</h2></a>
+  </div>
+
+  {% endif %}
+  {% if c.name == "Classes" %}
+  <div class="cats Classes">
+    <img class ="flaticons" src="{% static 'StormWind-img/arrows.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Classes</h2></a>
+  </div>
+  {% endif %}
+
+{% endfor %}
+
+<br><br />
+
+
+
+{% for t in threads %}
   user -  {{ t.member }}
   date - {{ t.date_created|date:"F d,Y" }}
   <hr>

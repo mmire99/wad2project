@@ -50,9 +50,11 @@ class HomeView(ListView):
 	ordering = ['-thread_date']
 
 	def get_context_data(self,*args,**kwargs):
-		cat_menu = Thread.objects.all()
+		cats = Category.objects.all()
+		threads = Thread.objects.all()
 		context = super(HomeView,self).get_context_data(*args,**kwargs)
-		context['cat_menu'] = cat_menu
+		context['cats'] = cats
+		context['threads'] = threads
 		return context
 
 
