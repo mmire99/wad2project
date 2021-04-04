@@ -18,7 +18,12 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].widget.attrs['class'] = 'form-control'
 
 class UserUpdateForm(forms.ModelForm):
-	email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
+	email = forms.EmailField(
+		required = False,
+		widget=forms.EmailInput(attrs={'class':'form-control'}))
+	username = forms.CharField(
+		required = False,
+		widget=forms.TextInput(attrs={'class':'form-control'}))
 	class Meta:
 		model = User
 		fields = ('username','email')

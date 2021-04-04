@@ -32,13 +32,19 @@
             <div class="col-sm-6">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">{{ t.title }}</h5>
+                  <h5 class="card-title">
+                {% if t.title|length > 40 %}
+                  {{ t.title|slice:40 }}..
+                {% else %}
+                  {{ t.title }}
+                {% endif %}
+                </h5>
                   {% if t.content|length > 90 %}
                     <p class="card-text">{{ t.content|safe|slice:90 }}...</p>
                   {% else %}
                     <p class="card-text">{{ t.content|safe }}</p>
                   {% endif %}
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <a href="{% url 'detail-view' t.id %}" class="btn btn-primary">Go to thread</a>
                 </div>
               </div>
             </div>

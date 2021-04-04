@@ -13,9 +13,6 @@ class Register(SuccessMessageMixin,CreateView):
 	success_url = reverse_lazy('login')
 	success_message='%(username)s Welcome to StormWind Herald, Login Here :p'
 
-# @login_required
-# def profile(request):
-# 	return render(request,'users/profile.html',{})
 
 def updateProfile(request):
 	if request.method == "POST":

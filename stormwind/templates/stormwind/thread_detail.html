@@ -10,7 +10,7 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <div class="media flex-wrap w-100 align-items-center"> <img src="{{ object.member.profile.profile_pic.url }}" width="40" height="40" class="d-block ui-w-40 rounded-circle" alt="">
-                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{{ object.member }}</a>
+                        <div class="media-body ml-3"> <a href="#" data-abc="true">{{ object.member }}</a>
                             <div class="text-muted small">{{ object.date_created|date:"F d,Y" }}</div>
                         </div>
                     </div>
@@ -23,8 +23,19 @@
                       {% if total_likes == 0 %}
                       {% else %}
                       <i class="fa fa-heart text-danger"></i>&nbsp; <span class="align-middle">{{ total_likes }}</span>
+
                       {% endif %}
                        </div>
+                     <div class="px-4 pt-3">
+                       {% if user.is_authenticated and user == object.member %}
+                         <a href="#">Update</a>
+                       {% endif %}
+                     </div>
+                    <div class="px-4 pt-3">
+                      {% if user.is_authenticated and user == object.member %}
+                        <a href="{% url 'delete_thread' thread.id %}">Delete</a>
+                      {% endif %}
+                    </div>
 
                     <div class="px-4 pt-3">
                       <form action="{% url 'like_post' thread.pk %}" method="post">
@@ -41,6 +52,7 @@
                       <small><a href="{% url 'login' %}">
                             Login</a> to like</small>
                       {% endif %}
+
                     </form> </div>
                 </div>
             </div>
@@ -48,27 +60,11 @@
     </div>
 </div>
 
+<br><br>
 
-<!-- <div class="card text-center">
-  <div class="card-header">
-  <img src="{{ object.member.profile.profile_pic.url }}" width="40" height="40" class="rounded-circle td_">
-  <h3>{{ object.member }}</h3>
-    <ul class="nav nav-pills card-header-pills">
-      {% if user.is_authenticated and user == object.member %}
-      <li class="nav-item">
-        <a class="nav-link btn btn-danger btn-space" href="#">Delete</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn btn-outline-secondary" style="margin-left:20px;" href="#">Edit</a>
-      </li>
-    </ul>
-    {% endif %}
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">{{ object.title }}</h5>
-    <small class="text-muted"></small>
-  </div>
-</div> -->
+
+
+
 
 
 

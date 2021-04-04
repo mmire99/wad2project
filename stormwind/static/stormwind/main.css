@@ -17,6 +17,8 @@ form{
 
 .register_{
   text-align: center;
+  width: 100%;
+
 }
 .create_thread{
   text-align: center;
@@ -141,4 +143,9 @@ text-align: center;
 
 .vcenter {
     margin-top:50px;
+}
+
+
+@media (max-width: 1028px) {
+
 }

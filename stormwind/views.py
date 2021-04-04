@@ -1,9 +1,9 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Thread,Category
-from django.views.generic import ListView,DetailView,CreateView
+from django.views.generic import ListView,DetailView,CreateView,DeleteView
 from .forms import ThreadForm
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import HttpResponse, HttpResponseNotFound
@@ -87,6 +87,11 @@ class AddThreadView(CreateView):
 	def form_valid(self,form):
 		form.instance.member = self.request.user
 		return super().form_valid(form)
+
+class DeleteThread(DeleteView):
+	model = Thread
+	template_name = 'stormwind/delete_thread.html'
+	success_url = reverse_lazy('home')
 
 def about(request):
 	return render(request,'stormwind/about.html')
