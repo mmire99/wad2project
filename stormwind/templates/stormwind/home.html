@@ -5,39 +5,87 @@
 
 
 <h1>Categories</h1>
+<br>
 <div class="top">
 {% for c in cats %}
   {% if c.name == "Community" %}
     <div class="cats Community">
       <img class ="flaticons"src="{% static 'StormWind-img/helmet.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Community</h2></a>
+      {% for t in community_homepage %}
+        <a href="{% url 'detail-view' t.id %}">
+          {% if t.title|length > 40 %}
+            {{ t.title|slice:":40"|safe}}...
+            {% else %}
+              {{ t.title }}
+            {% endif %}
+        </a>
+        <br>
+      {% endfor %}
     </div>
   {% endif %}
+
+
   {% if c.name == "Guides" %}
   <div class="cats Guide">
     <img class="flaticons"src="{% static 'StormWind-img/give-heart.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Guide</h2></a>
+    {% for t in guides_homepage %}
+      <a href="{% url 'detail-view' t.id %}">
+        {% if t.title|length > 40 %}
+              {{ t.title|slice:":40"|safe}}...
+          {% else %}
+                {{ t.title }}
+          {% endif %}
+      </a>
+      <br>
+    {% endfor %}
   </div>
 </div>
-{% endif %}
-{% if c.name == "GamePlay" %}
 
-  <div class="cats Community">
+{% endif %}
+
+
+{% if c.name == "GamePlay" %}
+<div class="bottom">
+  <div class="cats GamePlay">
     <img class="flaticons" src="{% static 'StormWind-img/swords.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>GamePlay</h2></a>
+    {% for t in gameplay_homepage %}
+      <a href="{% url 'detail-view' t.id %}">
+        {% if t.title|length > 40 %}
+              {{ t.title|slice:":40"|safe}}...
+          {% else %}
+                {{ t.title }}
+          {% endif %}
+      </a>
+      <br>
+    {% endfor %}
   </div>
 
   {% endif %}
+
   {% if c.name == "Classes" %}
   <div class="cats Classes">
     <img class ="flaticons" src="{% static 'StormWind-img/arrows.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Classes</h2></a>
+    {% for t in classes_homepage %}
+      <a href="{% url 'detail-view' t.id %}">
+        {% if t.title|length > 40 %}
+              {{ t.title|slice:":40"|safe}}...
+          {% else %}
+                {{ t.title }}
+          {% endif %}
+      </a>
+      <br>
+    {% endfor %}
   </div>
+</div>
   {% endif %}
 
 {% endfor %}
 
 <br><br />
 
+<!--
 
-
-{% for t in threads %}
+{% for t in latest_threads %}
   user -  {{ t.member }}
   date - {{ t.date_created|date:"F d,Y" }}
   <hr>
@@ -47,8 +95,7 @@
   {{ t.member.profile.profile_pic.url }}
   category - {{ t.category }}
   <hr>
+{% endfor %} -->
 
-
-{% endfor %}
 
 {% endblock content %}

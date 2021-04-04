@@ -25,7 +25,6 @@ form{
   -webkit-text-fill-color:transparent;
 }
 
-
 .update_{
   position: relative;
   right:90px
@@ -70,9 +69,9 @@ form{
 }
  .cats{
    background: #272E48;
-   width: 350px;
-   height: 350px;
-   margin:50px;
+   width: 300px;
+   height: 300px;
+
  }
 .flaticons{
   width: 40px;
@@ -82,23 +81,30 @@ form{
   float: left;
 }
  .Community{
-   position: relative;
+  position: absolute;
   display: inline-block;
  }
 .Guide{
-  position: relative;
+  position: absolute;
   display: inline-block;
+  right: 300px;
 }
 
+.top{
+  position: relative;
+  width: auto;
+  height: 350px;
+}
+.bottom{
+  position: relative;
+  width: auto;
+  height: 350px;
+}
 .GamePlay{
   position: absolute;
   display: inline-block;
 }
 .Classes{
   position: absolute;
-  display: inline-block;
-}
-
-.bottom{
-  width: 100%;
+  right: 300px;
 }
