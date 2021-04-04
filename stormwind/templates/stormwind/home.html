@@ -11,12 +11,14 @@
   {% if c.name == "Community" %}
     <div class="cats Community">
       <img class ="flaticons"src="{% static 'StormWind-img/helmet.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Community</h2></a>
+      <small class="text-muted cats-explained">recent threads in Community</small>
+      <br>
       {% for t in community_homepage %}
         <a href="{% url 'detail-view' t.id %}">
           {% if t.title|length > 40 %}
-            {{ t.title|slice:":40"|safe}}...
+                <p class="homepage_p">{{ t.title|slice:":40"|safe}}...</p>
             {% else %}
-              {{ t.title }}
+                  <p class="homepage_p">{{ t.title }}</p>
             {% endif %}
         </a>
         <br>
@@ -28,12 +30,14 @@
   {% if c.name == "Guides" %}
   <div class="cats Guide">
     <img class="flaticons"src="{% static 'StormWind-img/give-heart.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Guide</h2></a>
+    <small class="text-muted cats-explained">recent threads in Guides</small>
+    <br>
     {% for t in guides_homepage %}
       <a href="{% url 'detail-view' t.id %}">
         {% if t.title|length > 40 %}
-              {{ t.title|slice:":40"|safe}}...
+              <p class="homepage_p">{{ t.title|slice:":40"|safe}}...</p>
           {% else %}
-                {{ t.title }}
+                <p class="homepage_p">{{ t.title }}</p>
           {% endif %}
       </a>
       <br>
@@ -48,12 +52,14 @@
 <div class="bottom">
   <div class="cats GamePlay">
     <img class="flaticons" src="{% static 'StormWind-img/swords.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>GamePlay</h2></a>
+    <small class="text-muted cats-explained">recent threads in GamePlay</small>
+    <br>
     {% for t in gameplay_homepage %}
       <a href="{% url 'detail-view' t.id %}">
         {% if t.title|length > 40 %}
-              {{ t.title|slice:":40"|safe}}...
+              <p class="homepage_p">{{ t.title|slice:":40"|safe}}...</p>
           {% else %}
-                {{ t.title }}
+                <p class="homepage_p">{{ t.title }}</p>
           {% endif %}
       </a>
       <br>
@@ -65,12 +71,14 @@
   {% if c.name == "Classes" %}
   <div class="cats Classes">
     <img class ="flaticons" src="{% static 'StormWind-img/arrows.png' %}" alt=""><a href="{% url 'categories' c %}"><h2>Classes</h2></a>
+    <small class="text-muted cats-explained">recent threads in Classes</small>
+    <br>
     {% for t in classes_homepage %}
       <a href="{% url 'detail-view' t.id %}">
         {% if t.title|length > 40 %}
-              {{ t.title|slice:":40"|safe}}...
+              <p class="homepage_p">{{ t.title|slice:":40"|safe}}...</p>
           {% else %}
-                {{ t.title }}
+                <p class="homepage_p">{{ t.title }}</p>
           {% endif %}
       </a>
       <br>

@@ -53,10 +53,10 @@ class HomeView(ListView):
 		cats = Category.objects.all()
 		latest_threads = Thread.objects.all().order_by('-id')[:4]
 		threads = Thread.objects.all()
-		gameplay_homepage = Thread.objects.filter(category="GamePlay").order_by("-id")[:3]
-		community_homepage = Thread.objects.filter(category="Community").order_by("-id")[:3]
-		classes_homepage = Thread.objects.filter(category="Classes").order_by("-id")[:3]
-		guides_homepage = Thread.objects.filter(category="Guides").order_by("-id")[:3]
+		gameplay_homepage = Thread.objects.filter(category="GamePlay").order_by("-id")[:5]
+		community_homepage = Thread.objects.filter(category="Community").order_by("-id")[:5]
+		classes_homepage = Thread.objects.filter(category="Classes").order_by("-id")[:5]
+		guides_homepage = Thread.objects.filter(category="Guides").order_by("-id")[:5]
 		context = super(HomeView,self).get_context_data(*args,**kwargs)
 		context['cats'] = cats
 		context['latest_threads'] = latest_threads 

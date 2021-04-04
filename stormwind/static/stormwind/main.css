@@ -18,7 +18,9 @@ form{
 .register_{
   text-align: center;
 }
-
+.create_thread{
+  text-align: center;
+}
 .Header_{
   font-family:sans-serif;
   -webkit-text-stroke:1px white;
@@ -107,4 +109,36 @@ form{
 .Classes{
   position: absolute;
   right: 300px;
+}
+
+.homepage_p{
+  font-size: 15px;
+  margin: 0;
+  padding:0;
+  position: relative;
+  left: 20px;
+}
+.cats-explained{
+  position: absolute;
+  top: 275px;
+  left: 20px
+}
+
+footer {
+bottom: 0px;
+width: 100%;
+text-align: center;
+}
+
+.social-icon {
+  margin: 20px 10px;
+}
+
+.td_{
+  float: left;
+  text-align: center;
+}
+
+.vcenter {
+    margin-top:50px;
 }

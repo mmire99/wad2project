@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'stormwind/main.css' %}">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <title>{% block title %} StormWind Herald {% endblock %}</title>
   </head>
@@ -67,10 +68,14 @@
   {% block content %}{% endblock %}
 </div>
 
-<!-- <button class="btn btn-primary"
-onclick="alert('You clicked the button using inline JavaScript.');">
-Click me - I run on vanilla JavaScript!
-</button> -->
+<footer class="white-section" id="footer">
+  <div class="container-fluid">
+    <i class="social-icon fab fa-facebook-f"></i>
+    <i class="social-icon fab fa-twitter"></i>
+    <i class="social-icon fab fa-instagram"></i>
+    <i class="social-icon fas fa-envelope"></i>
+  </div>
+</footer>
 
 
     <!-- <script src="{% static 'js/script.js' %}" type="text/javascript"></script> -->

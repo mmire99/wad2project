@@ -1,22 +1,63 @@
 {% extends "stormwind/base.html" %}
 {% block title %} {{ cats }} {% endblock %}
 {% block content %}
-{% if category_post %}
-  ha
-{% else %}
-  nope
-{% endif %}
-{% for t in category_objects %}
-  user -  {{ t.member }}
-  date - {{ t.date_created|date:"F d,Y" }}
-  <hr>
-  <a href="{% url 'detail-view' t.id %}">{{ t.title }}</a>
-  <br>
-  body - {{ t.content }}
-    <img src="{{ t.member.profile.profile_pic.url }}" width="40" height="40" class="rounded-circle">
 
-  category - {{ t.category }}
-  <hr>
-{% endfor %}
 
-{% endblock content %}
+<div class="container-fluid mt-100">
+  <div class="d-flex flex-wrap justify-content-between">
+    <div> <button type="button" class="btn btn-shadow btn-wide btn-primary"> <span class="btn-icon-wrapper pr-2 opacity-7"> <i class="fa fa-plus fa-w-20"></i> </span> New thread </button> </div>
+    <br>
+    <br>
+  </div>
+  <div class="card mb-3">
+    <div class="card-header pl-0 pr-0">
+      <div class="row no-gutters w-100 align-items-center">
+        <div class="col ml-3">Topics</div>
+        <div class="col-4 text-muted">
+          <div class="row no-gutters align-items-center">
+            <div class="col-4">Replies</div>
+            <div class="col-8">Last update</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% for t in category_objects %}
+    <div class="card-body py-3">
+      <div class="row no-gutters align-items-center">
+        <div class="col"> <a href="{% url 'detail-view' t.id %}" class="text-big" data-abc="true">
+            {% if t.title|length > 40 %}
+            {{ t.title|slice:":40"|safe}}
+            {% else %}
+            {{ t.title }}
+            {% endif %}
+          </a>
+          <div class="text-muted small mt-1">{{ t.date_created|date:"F d,Y" }} <a href="javascript:void(0)" class="text-muted" data-abc="true">{{ t.member }}</a></div>
+        </div>
+        <div class="d-none d-md-block col-4">
+          <div class="row no-gutters align-items-center">
+            <div class="col-4">12</div>
+            <div class="media col-8 align-items-center"> <img src="{{ t.member.profile.profile_pic.url }}" width="40" height="40" alt="" class="d-block ui-w-30 rounded-circle">
+              <div class="media-body flex-truncate ml-2">
+                <div class="line-height-1 text-truncate">1 day ago</div> <a href="javascript:void(0)" class="text-muted small text-truncate" data-abc="true">by Tim cook</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="m-0">
+    {% endfor %}
+  </div>
+
+
+
+
+
+
+
+
+  <!-- category - {{ t.category }} -->
+  <hr>
+
+
+  {% endblock content %}
