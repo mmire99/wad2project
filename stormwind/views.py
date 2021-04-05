@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404
-from .models import Thread,Category
+from .models import Thread,Category,Reply
 from django.views.generic import ListView,DetailView,CreateView,DeleteView
-from .forms import ThreadForm
+from .forms import ThreadForm,ReplyForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse,reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -92,6 +92,19 @@ class DeleteThread(DeleteView):
 	model = Thread
 	template_name = 'stormwind/delete_thread.html'
 	success_url = reverse_lazy('home')
+
+class ReplyToThread(CreateView):
+	model = Reply
+	form_class = ReplyForm
+	template_name = 'stormwind/reply.html'
+	
+	def form_valid(self,form):
+		form.instance.name = self.request.user
+		form.instance.thread_id = self.kwargs['pk']
+		return super().form_valid(form)
+
+	def get_success_url(self):
+		return reverse_lazy('detail-view', kwargs={'pk': self.kwargs['pk']})
 
 def about(request):
 	return render(request,'stormwind/about.html')

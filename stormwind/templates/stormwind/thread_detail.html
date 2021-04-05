@@ -36,6 +36,12 @@
                         <a href="{% url 'delete_thread' thread.id %}">Delete</a>
                       {% endif %}
                     </div>
+                    <div class="px-4 pt-3">
+                      {% if not user.is_authenticated %}
+                      <small><a href="{% url 'login' %}">
+                            Login</a> to like</small>
+                      {% endif %}
+                    </div>
 
                     <div class="px-4 pt-3">
                       <form action="{% url 'like_post' thread.pk %}" method="post">
@@ -48,14 +54,51 @@
                         <button type="Submit" name="thread_id" value="{{ thread.id }}" class = "btn btn-primary btn-sm">
                           Like</button>
                         {% endif %}
-                      {% else %}
-                      <small><a href="{% url 'login' %}">
-                            Login</a> to like</small>
                       {% endif %}
 
                     </form> </div>
                 </div>
             </div>
+            <hr>
+            <div class="container d-flex justify-content-center mt-100 mb-100">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                  {% if thread.replies.all %}
+                    <h4 class="card-title">Recent Replies</h4>
+                    {% if user.is_authenticated %}
+                      <h6 class="card-subtitle"><a href="{% url 'add_reply' thread.pk %}">Click here to reply</a></h6>
+                    {% else %}
+                      <h6 class="card-subtitle"><a href="{% url 'login' %}">Click here to reply</a></h6>
+                    {% endif %}
+                  {% else %}
+                  {% if user.is_authenticated %}
+                    <h6 class="card-subtitle"><a href="{% url 'add_reply' thread.pk %}">Be the first to reply to the thread!!</a></h6>
+                  {% else %}
+                    <h6 class="card-subtitle"><a href="{% url 'login' %}">Be the first to reply to the thread!!</a></h6>
+                  {% endif %}
+                </div>
+                {% endif %}
+                {% if thread.replies.all %}
+                  {% for r in thread.replies.all %}
+                <div class="comment-widgets m-b-20">
+                    <div class="d-flex flex-row comment-row">
+                        <div class="p-2"><span class="round"><img src="{{ object.member.profile.profile_pic.url }}" width="40" height="40" class="d-block ui-w-40 rounded-circle" alt=""></span></div>
+                        <div class="comment-text w-100">
+                            <h5>{{ r.name }}</h5>
+                            <div class="comment-footer"> <span class="date">{{ r.date }}</span><a href="#"></a> <a href="#"></a> <a href="#"></a>  </div>
+                            <p class="m-b-5 m-t-10">{{ r.body }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                  {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
 </div>

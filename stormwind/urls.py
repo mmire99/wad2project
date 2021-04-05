@@ -10,4 +10,5 @@ urlpatterns = [
     path('profile/',views.profile,name='profile'),
     path('Category/<str:category>/',views.Categories,name='categories'),
     path('Thread/<int:pk>/delete',views.DeleteThread.as_view(),name='delete_thread'),
+    path('Thread/<int:pk>/Comment',views.ReplyToThread.as_view(),name='add_reply'),
 ]

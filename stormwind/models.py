@@ -28,3 +28,14 @@ class Category(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('home')
+
+
+
+class Reply(models.Model):
+	thread = models.ForeignKey(Thread,on_delete=models.CASCADE,related_name="replies")
+	name = models.CharField(max_length=150)
+	body = models.TextField()
+	date = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return '%s - %s' % (self.thread.title,self.name)
