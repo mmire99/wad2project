@@ -100,6 +100,7 @@ class ReplyToThread(CreateView):
 	
 	def form_valid(self,form):
 		form.instance.name = self.request.user
+		form.instance.img_url = self.request.user.profile.profile_pic
 		form.instance.thread_id = self.kwargs['pk']
 		return super().form_valid(form)
 

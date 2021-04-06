@@ -37,6 +37,7 @@ class Reply(models.Model):
 	name = models.CharField(max_length=150)
 	body = models.TextField()
 	date = models.DateTimeField(auto_now_add=True)
+	img_url = models.ImageField()
 
 	def __str__(self):
 		return '%s - %s' % (self.thread.title,self.name)
