@@ -1,20 +1,23 @@
 {% extends "stormwind/base.html" %}
 {% load crispy_forms_tags %}
-{% block title %} Reply to {% endblock %}
+{% block title %} Update Thread {% endblock %}
 {% block content %}
-{% if user.is_authenticated %}
+{% if user.is_authenticated and user == object.member %}
+  {{ form.media }}
   <form class ="create_thread" style="width:100%;"method="post">
     {% csrf_token %}
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Reply</legend>
+      <legend class="border-bottom mb-4">Update The Thread!</legend>
 
       <strong>{{ form|crispy }}</strong>
     </fieldset>
     <div class="form-group">
-			<button id="signupSubmit" type="submit" class="btn btn-info btn-block">Reply!</button>
+			<button id="signupSubmit" type="submit" class="btn btn-info btn-block">Create!</button>
 		</div>
 		<hr>
   </form>
 
+{% else %}
+  <h1>You didn't create this thread</h1>    
 {% endif %}
 {% endblock content %}

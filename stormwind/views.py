@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Thread,Category,Reply
-from django.views.generic import ListView,DetailView,CreateView,DeleteView
+from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView
 from .forms import ThreadForm,ReplyForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse,reverse_lazy
@@ -14,7 +14,7 @@ def Categories(request,category):
 	if not category_objects:
 		return HttpResponseNotFound('<h1>Page not found</h1>')
 	else:
-		category_objects = Thread.objects.filter(category=category)		
+		category_objects = Thread.objects.filter(category=category)	
 		return render(request,'stormwind/categories.html',{'cats':category,
 										     'category_objects':category_objects})
 
@@ -44,7 +44,7 @@ def likeButton(request,pk):
 
 
 
-class HomeView(ListView):
+class Home(ListView):
 	model = Thread
 	template_name = 'stormwind/home.html'
 	ordering = ['-thread_date']
@@ -57,7 +57,7 @@ class HomeView(ListView):
 		community_homepage = Thread.objects.filter(category="Community").order_by("-id")[:5]
 		classes_homepage = Thread.objects.filter(category="Classes").order_by("-id")[:5]
 		guides_homepage = Thread.objects.filter(category="Guides").order_by("-id")[:5]
-		context = super(HomeView,self).get_context_data(*args,**kwargs)
+		context = super(Home,self).get_context_data(*args,**kwargs)
 		context['cats'] = cats
 		context['latest_threads'] = latest_threads 
 		context['threads'] = threads
@@ -106,5 +106,8 @@ class ReplyToThread(CreateView):
 	def get_success_url(self):
 		return reverse_lazy('detail-view', kwargs={'pk': self.kwargs['pk']})
 
-def about(request):
-	return render(request,'stormwind/about.html')
+class UpdateThread(UpdateView):
+	model = Thread
+	# form_class = UpdateForm
+	template_name = 'stormwind/updateThread.html'
+	fields = ['title','content']

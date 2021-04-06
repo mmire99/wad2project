@@ -91,19 +91,5 @@
 
 <br><br />
 
-<!--
-
-{% for t in latest_threads %}
-  user -  {{ t.member }}
-  date - {{ t.date_created|date:"F d,Y" }}
-  <hr>
-  <a href="{% url 'detail-view' t.id %}">{{ t.title }}</a>
-  <br>
-  body - {{ t.content }}
-  {{ t.member.profile.profile_pic.url }}
-  category - {{ t.category }}
-  <hr>
-{% endfor %} -->
-
 
 {% endblock content %}

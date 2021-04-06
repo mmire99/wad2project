@@ -22,7 +22,7 @@ class UserUpdateForm(forms.ModelForm):
 		required = False,
 		widget=forms.EmailInput(attrs={'class':'form-control'}))
 	username = forms.CharField(
-		required = False,
+		required = True,
 		widget=forms.TextInput(attrs={'class':'form-control'}))
 	class Meta:
 		model = User

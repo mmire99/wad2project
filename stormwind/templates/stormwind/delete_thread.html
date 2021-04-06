@@ -1,5 +1,5 @@
 {% extends "stormwind/base.html" %}
-{% block title %} StormWind Herald {% endblock %}
+{% block title %} Delete Thread {% endblock %}
 {% block content %}
 
 {% if user.is_authenticated and user == object.member %}
@@ -11,8 +11,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="container d-flex pl-0"><img src="https://imgur.com/Kh1gwTq.png">
-          <h5 class="modal-title ml-2" id="exampleModalLabel">Delete the link?</h5>
+        <div class="container d-flex pl-0"><i class="fas fa-dumpster"></i>
+          <h5 class="modal-title ml-2" style="background-color:red;">Delete the link?</h5>
         </div> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
       </div>
       <div class="modal-body">

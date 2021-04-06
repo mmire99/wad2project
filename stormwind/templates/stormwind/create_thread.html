@@ -1,13 +1,13 @@
 {% extends "stormwind/base.html" %}
 {% load crispy_forms_tags %}
-{% block title %} About {% endblock %}
+{% block title %} Create Thread {% endblock %}
 {% block content %}
 
   {{ form.media }}
-  <form class ="create_thread"method="post">
+  <form class ="create_thread" style="width:100%;"method="post">
     {% csrf_token %}
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Create</legend>
+      <legend class="border-bottom mb-4">Create A new Thread!</legend>
 
       <strong>{{ form|crispy }}</strong>
     </fieldset>
