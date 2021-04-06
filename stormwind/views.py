@@ -10,11 +10,11 @@ from django.http import HttpResponse, HttpResponseNotFound
 
 
 def Categories(request,category):
-	category_objects = Thread.objects.filter(category=category)
+	category_objects = Thread.objects.filter(category=category).order_by('-id')
 	if not category_objects:
 		return HttpResponseNotFound('<h1>Page not found</h1>')
 	else:
-		category_objects = Thread.objects.filter(category=category)	
+		category_objects = Thread.objects.filter(category=category).order_by('-id')
 		return render(request,'stormwind/categories.html',{'cats':category,
 										     'category_objects':category_objects})
 
