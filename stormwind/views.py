@@ -47,7 +47,7 @@ def likeButton(request,pk):
 class Home(ListView):
 	model = Thread
 	template_name = 'stormwind/home.html'
-	ordering = ['-thread_date']
+	ordering = ['-date_created']
 
 	def get_context_data(self,*args,**kwargs):
 		cats = Category.objects.all()
@@ -59,7 +59,7 @@ class Home(ListView):
 		guides_homepage = Thread.objects.filter(category="Guides").order_by("-id")[:5]
 		context = super(Home,self).get_context_data(*args,**kwargs)
 		context['cats'] = cats
-		context['latest_threads'] = latest_threads 
+		context['latest_threads'] = latest_threads
 		context['threads'] = threads
 		context['gameplay_homepage'] = gameplay_homepage
 		context['community_homepage'] = community_homepage
@@ -97,7 +97,7 @@ class ReplyToThread(CreateView):
 	model = Reply
 	form_class = ReplyForm
 	template_name = 'stormwind/reply.html'
-	
+
 	def form_valid(self,form):
 		form.instance.name = self.request.user
 		form.instance.img_url = self.request.user.profile.profile_pic
